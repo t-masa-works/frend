@@ -1,6 +1,18 @@
 <h1>サインアップ</h1>
 
 <%= form_with(model: @user, local: true) do |f| %>
+
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohidited this <%= @user.name %> from being saved;</h2>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
   <%= f.label :name %>
   <%= f.text_field :name %>
 
@@ -13,6 +25,6 @@
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %>
 
-  <%= f.submit "Create my account" %>
+  <%= f.submit "新規アカウントを作成する" %>
 
 <% end %>
