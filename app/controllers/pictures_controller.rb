@@ -16,9 +16,8 @@ class PicturesController < ApplicationController
   end
 
   def create
-    @picture = Picture.new(picture_params)
-    @picture.user = current_user
-
+    @picture = current_user.pictures.build(picture_params)
+    render :new if params[:back]
     respond_to do |format|
       if @picture.save
         format.html { redirect_to picture_url(@picture), notice: "画像の保存に成功しました" }
@@ -42,6 +41,11 @@ class PicturesController < ApplicationController
         format.json { render json: @picture.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def confirm
+    @picture = current_user.pictures.build(picture_params)
+    render :new if @picture.invalid?
   end
 
   def destroy
