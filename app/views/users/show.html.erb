@@ -2,5 +2,17 @@
 
 <p>メールアドレス: <%= @user.email %></p>
 
+
 <%= link_to "画像を投稿する", new_picture_path %>
-<%= link_to "投稿画像一覧を見る", pictures_path %>
+<%= link_to "みんなの投稿画像一覧を見る", pictures_path %>
+
+<h2>自分の投稿画像一覧</h2>
+
+<% @user.pictures.each_with_index do |picture, index| %>
+  <p><%= index + 1 %><%= picture.comment %></p>
+  <p><%= picture.image.url %></p>
+    <%= link_to '詳細を見る', picture, data: { confirm: "#{index +1}の画像を確認しますか？" } %>
+    <%= link_to '編集する', edit_picture_path(picture), data: { confirm: "#{index +1}の画像を編集しますか？" } %>
+    <%= link_to '削除する', picture, method: :delete, data: { confirm: "#{index +1}の画像を削除してもいいですか？" } %>
+<% end %>
+
