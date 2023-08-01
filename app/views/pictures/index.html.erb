@@ -1,24 +1,27 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Pictures</h1>
+<h1>画像一覧</h1>
 
 <table>
   <thead>
     <tr>
       <th>Image</th>
-      <th>User</th>
+      <th>投稿者名</th>
+      <th>コメント</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @pictures.each do |picture| %>
+    <% @pictures.each_with_index do |picture, index| %>
       <tr>
+        <td><%= index + 1 %></td>
         <td><%= picture.image %></td>
         <td><%= picture.user.name %></td>
-        <td><%= link_to 'Show', picture %></td>
-        <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
-        <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= picture.comment %></td>
+        <td><%= link_to '詳細を見る', picture, data: { confirm: "#{index +1}の画像を確認しますか？" } %></td>
+        <td><%= link_to '編集する', edit_picture_path(picture), data: { confirm: "#{index +1}の画像を編集しますか？" } %></td>
+        <td><%= link_to '削除する', picture, method: :delete, data: { confirm: "#{index +1}の画像を削除してもいいですか？" } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +29,4 @@
 
 <br>
 
-<%= link_to 'New Picture', new_picture_path %>
+<%= link_to '新しい画像を投稿する', new_picture_path %>
