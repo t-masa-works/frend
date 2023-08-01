@@ -2,6 +2,8 @@
 
 <h1>画像一覧</h1>
 
+<%= link_to "自分の画像一覧を見る", user_path(current_user.id) %>
+
 <table>
   <thead>
     <tr>
@@ -15,23 +17,15 @@
 
   <tbody>
     <% @pictures.each_with_index do |picture, index| %>
-      <% if @user == current_user %>
         <tr>
           <td><%= index + 1 %></td>
           <td><%= picture.image %></td>
           <td><%= picture.user.name %></td>
           <td><%= picture.comment %></td>
           <td><%= link_to '詳細を見る', picture, data: { confirm: "#{index +1}の画像を確認しますか？" } %></td>
+           <% if logged_in? && picture.user == current_user %>
           <td><%= link_to '編集する', edit_picture_path(picture), data: { confirm: "#{index +1}の画像を編集しますか？" } %></td>
           <td><%= link_to '削除する', picture, method: :delete, data: { confirm: "#{index +1}の画像を削除してもいいですか？" } %></td>
-        </tr>
-      <% else %>
-        <tr>
-          <td><%= index + 1 %></td>
-          <td><%= picture.image %></td>
-          <td><%= picture.user.name %></td>
-          <td><%= picture.comment %></td>
-          <td><%= link_to '詳細を見る', picture, data: { confirm: "#{index +1}の画像を確認しますか？" } %></td>
         </tr>
       <% end %>
     <% end %>
