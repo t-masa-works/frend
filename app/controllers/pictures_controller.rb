@@ -1,6 +1,7 @@
 class PicturesController < ApplicationController
   def index
     @pictures = Picture.all
+    @user = current_user
   end
 
   def show
@@ -31,7 +32,6 @@ class PicturesController < ApplicationController
 
   def update
     set_picture
-
     respond_to do |format|
       if @picture.update(picture_params)
         format.html { redirect_to picture_url(@picture), notice: "画像の編集に成功しました." }
