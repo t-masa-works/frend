@@ -2,13 +2,10 @@
 
 <p>
   <strong>Image:</strong>
-  <%= @picture.image %>
+  <%= image_tag @picture.image.url %>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= image_tag @picture.user.url %>
-</p>
 
-<%= link_to 'Edit', edit_picture_path(@picture) %> |
-<%= link_to 'Back', pictures_path %>
+
+<%= link_to '画像を編集する', edit_picture_path(@picture) %> |
+<%= link_to '画像一覧へ戻る', pictures_path %>

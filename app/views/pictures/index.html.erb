@@ -15,7 +15,7 @@
     <% @pictures.each do |picture| %>
       <tr>
         <td><%= picture.image %></td>
-        <td><%= picture.user_id %></td>
+        <td><%= picture.user.name %></td>
         <td><%= link_to 'Show', picture %></td>
         <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
         <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
