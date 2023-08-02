@@ -255,6 +255,9 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   jquery-rails
   listen (~> 3.3)
+  net-imap
+  net-pop
+  net-smtp
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 6.1.6)
