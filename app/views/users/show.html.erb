@@ -3,16 +3,19 @@
 <p>メールアドレス: <%= @user.email %></p>
 
 
-<%= link_to "画像を投稿する", new_picture_path %>
-<%= link_to "みんなの投稿画像一覧を見る", pictures_path %>
+<button type="button" class="btn btn-info"><%= link_to "みんなの投稿画像一覧を見る", pictures_path %></button>
+<button type="button" class="btn btn-info"><%= link_to "画像を投稿する", new_picture_path %></button>
 
 <h2>自分の投稿画像一覧</h2>
 
-<% @user.pictures.each_with_index do |picture, index| %>
-  <p><%= index + 1 %><%= picture.comment %></p>
-  <p><%= picture.image.url %></p>
-    <%= link_to '詳細を見る', picture, data: { confirm: "#{index +1}の画像を確認しますか？" } %>
-    <%= link_to '編集する', edit_picture_path(picture), data: { confirm: "#{index +1}の画像を編集しますか？" } %>
-    <%= link_to '削除する', picture, method: :delete, data: { confirm: "#{index +1}の画像を削除してもいいですか？" } %>
-<% end %>
-
+<div class="user-contents">
+  <% @user.pictures.each_with_index do |picture, index| %>
+    <p class="m-2 display-3"><%= index + 1 %></p>
+    <%= image_tag picture.image.url %>
+    <h5>コメント</h5>
+    <p><%= picture.comment %></p>
+    <button type="button" class="btn btn-primary"><%= link_to '詳細を見る', picture, data: { confirm: "#{index +1}の画像を確認しますか？" } %></button>
+    <button type="button" class="btn btn-success"><%= link_to '編集する', edit_picture_path(picture), data: { confirm: "#{index +1}の画像を編集しますか？" } %></button>
+    <button type="button" class="btn btn-danger"><%= link_to '削除する', picture, method: :delete, data: { confirm: "#{index +1}の画像を削除してもいいですか？" } %></button>
+  <% end %>
+</div>

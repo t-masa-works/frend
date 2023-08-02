@@ -1,5 +1,7 @@
 <p id="notice"></p>
 
+<h1>画像の詳細</h1>
+
 <p>
   <strong>Image:</strong>
   <%= image_tag @picture.image.url %>
@@ -8,6 +10,6 @@
 <h2>コメント：<%= @picture.comment %></h2>
 
 <% if logged_in? && @picture.user == current_user %>
-<%= link_to '画像を編集する', edit_picture_path(@picture) %>
+<button type="button" class="btn btn-info"><%= link_to '画像を編集する', edit_picture_path(@picture) %></button>
 <% end %>
-<%= link_to '画像一覧へ戻る', pictures_path %>
+<button type="button" class="btn btn-info"><%= link_to '画像一覧へ戻る', pictures_path %></button>

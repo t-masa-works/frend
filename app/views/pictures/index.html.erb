@@ -2,7 +2,8 @@
 
 <h1>画像一覧</h1>
 
-<%= link_to "自分の画像一覧を見る", user_path(current_user.id) %>
+<button type="button" class="btn btn-info"><%= link_to "自分の画像一覧を見る", user_path(current_user.id) %></button>
+<button type="button" class="btn btn-info"><%= link_to '新しい画像を投稿する', new_picture_path %></button>
 
 <table>
   <thead>
@@ -19,19 +20,19 @@
     <% @pictures.each_with_index do |picture, index| %>
         <tr>
           <td><%= index + 1 %></td>
-          <td><%= picture.image %></td>
+          <td><%= image_tag picture.image.url %></td>
           <td><%= picture.user.name %></td>
           <td><%= picture.comment %></td>
-          <td><%= link_to '詳細を見る', picture, data: { confirm: "#{index +1}の画像を確認しますか？" } %></td>
-           <% if logged_in? && picture.user == current_user %>
-          <td><%= link_to '編集する', edit_picture_path(picture), data: { confirm: "#{index +1}の画像を編集しますか？" } %></td>
-          <td><%= link_to '削除する', picture, method: :delete, data: { confirm: "#{index +1}の画像を削除してもいいですか？" } %></td>
+          <td><button type="button" class="btn btn-primary"><%= link_to '詳細を見る', picture, data: { confirm: "#{index +1}の画像を確認しますか？" } %></button></td>
+          <% if logged_in? && picture.user == current_user %>
+            <td><button type="button" class="btn btn-success"><%= link_to '編集する', edit_picture_path(picture), data: { confirm: "#{index +1}の画像を編集しますか？" } %></button></td>
+            <td><button type="button" class="btn btn-danger"><%= link_to '削除する', picture, method: :delete, data: { confirm: "#{index +1}の画像を削除してもいいですか？" } %></button></td>
         </tr>
-      <% end %>
+          <% end %>
     <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to '新しい画像を投稿する', new_picture_path %>
+

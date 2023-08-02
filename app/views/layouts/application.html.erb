@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= favicon_link_tag('favicon.ico') %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -14,18 +15,35 @@
     <% flash.each do |key, value| %>
       <%= content_tag(:div,value, class:"#{key}") %>
     <% end %>
+    <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">つながるアプリ</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDark" aria-controls="navbarDark" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</nav>
 
     <% if logged_in? %>
       <% if @user == current_user %>
-        <%= link_to "ログアウト", session_path(current_user.id), method: :delete, data: {confirm: "ログアウトしてもよろしいですか？"} %>
+        <button type="button" class="btn btn-secondary m-3"><%= link_to "ログアウト", session_path(current_user.id), method: :delete, data: {confirm: "ログアウトしてもよろしいですか？"} %></button>
       <% else %>
-        <%= link_to "プロフィール", user_path(current_user.id) %>
-        <%= link_to "ログアウト", session_path(current_user.id), method: :delete, data: {confirm: "ログアウトしてもよろしいですか？"} %>
+        <button type="button" class="btn btn-warning m-3"><%= link_to "マイプロフィール", user_path(current_user.id) %></button>
+        <button type="button" class="btn btn-secondary m-3"><%= link_to "ログアウト", session_path(current_user.id), method: :delete, data: {confirm: "ログアウトしてもよろしいですか？"} %></button>
       <% end %>
     <% else %>
-      <%= link_to "サインアップ", new_user_path %>
-      <%= link_to "ログイン", new_session_path %>
+      <button type="button" class="btn btn-info m-3"><%= link_to "サインアップ", new_user_path %></button>
+      <button type="button" class="btn btn-dark m-3"><%= link_to "ログイン", new_session_path %></button>
     <% end %>
+
+    <div class="container">
     <%= yield %>
+    </div>
+
+    <nav class="navbar relative-bottom navbar-light bg-light">
+      <div class="container-fluid">
+       <a class="navbar-brand ml-auto" href="#">上まで戻る</a>
+      </div>
+    </nav>
   </body>
 </html>
