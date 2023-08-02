@@ -15,12 +15,12 @@ gem 'net-smtp'
 gem 'net-imap'
 gem 'net-pop'
 gem 'bootstrap', '~> 4.4.1'
+gem 'bcrypt'
+gem 'carrierwave'
+gem 'jquery-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'bcrypt'
-  gem 'carrierwave'
-  gem 'jquery-rails'
 end
 
 group :development do
