@@ -13,17 +13,17 @@
   </div>
 <% end %>
 
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <p><%= f.label :name %></p>
+  <p><%= f.text_field :name %></p>
 
-  <%= f.label :email %>
-  <%= f.email_field :email %>
+  <p><%= f.label :email %></p>
+  <p><%= f.email_field :email, :placeholder => "sample@example.com" %></p>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+  <p><%= f.label :password %></p>
+  <p><%= f.password_field :password %></p>
 
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
+  <p><%= f.label :password_confirmation %></p>
+  <p><%= f.password_field :password_confirmation %></p>
 
   <%= f.submit "新規アカウントを作成する" %>
 

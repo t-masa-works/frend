@@ -10,6 +10,7 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+    <div class="base">
 
   <body>
     <% flash.each do |key, value| %>
@@ -18,11 +19,8 @@
     <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">つながるアプリ</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDark" aria-controls="navbarDark" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
   </div>
-</nav>
+  </nav>
 
     <% if logged_in? %>
       <% if @user == current_user %>
@@ -40,10 +38,11 @@
     <%= yield %>
     </div>
 
-    <nav class="navbar relative-bottom navbar-light bg-light">
-      <div class="container-fluid">
+    <footer>
+    <nav class="navbar navbar-dark bg-dark">
        <a class="navbar-brand ml-auto" href="#">上まで戻る</a>
-      </div>
     </nav>
+    </footer>
   </body>
+   </div>
 </html>

@@ -1,3 +1,14 @@
+<div class="top">
+<div class="card bg-dark text-white ">
+  <img src="/assets/Top.jpg" class="card-img" alt="..." style=height:400px;>
+  <div class="card-img-overlay d-flex align-items-center justify-content-center">
+    <h5 class="card-title display-4">つながりアプリケーション</h5>
+  
+  </div>
+</div>
+</div>
+
+
 <p id="notice"></p>
 
 <h1>画像一覧</h1>
@@ -20,7 +31,7 @@
     <% @pictures.each_with_index do |picture, index| %>
         <tr>
           <td><%= index + 1 %></td>
-          <td><%= image_tag picture.image.url %></td>
+          <td><%= image_tag picture.image.url, :size => '250x250' %></td>
           <td><%= picture.user.name %></td>
           <td><%= picture.comment %></td>
           <td><button type="button" class="btn btn-primary"><%= link_to '詳細を見る', picture, data: { confirm: "#{index +1}の画像を確認しますか？" } %></button></td>
