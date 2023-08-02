@@ -10,6 +10,6 @@
 <h2>コメント：<%= @picture.comment %></h2>
 
 <% if logged_in? && @picture.user == current_user %>
-<button type="button" class="btn btn-info"><%= link_to '画像を編集する', edit_picture_path(@picture) %></button>
+  <button type="button" class="btn btn-info"><%= link_to '画像を編集する', edit_picture_path(@picture) %></button>
 <% end %>
 <button type="button" class="btn btn-info"><%= link_to '画像一覧へ戻る', pictures_path %></button>

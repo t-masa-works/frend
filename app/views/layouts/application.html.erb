@@ -9,40 +9,41 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
     <div class="base">
+      <body>
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div,value, class:"#{key}") %>
+        <% end %>
 
-  <body>
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div,value, class:"#{key}") %>
-    <% end %>
-    <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">つながるアプリ</a>
-  </div>
-  </nav>
+        <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">つながるアプリ</a>
+          </div>
+        </nav>
 
-    <% if logged_in? %>
-      <% if @user == current_user %>
-        <button type="button" class="btn btn-secondary m-3"><%= link_to "ログアウト", session_path(current_user.id), method: :delete, data: {confirm: "ログアウトしてもよろしいですか？"} %></button>
-      <% else %>
-        <button type="button" class="btn btn-warning m-3"><%= link_to "マイプロフィール", user_path(current_user.id) %></button>
-        <button type="button" class="btn btn-secondary m-3"><%= link_to "ログアウト", session_path(current_user.id), method: :delete, data: {confirm: "ログアウトしてもよろしいですか？"} %></button>
-      <% end %>
-    <% else %>
-      <button type="button" class="btn btn-info m-3"><%= link_to "サインアップ", new_user_path %></button>
-      <button type="button" class="btn btn-dark m-3"><%= link_to "ログイン", new_session_path %></button>
-    <% end %>
+        <% if logged_in? %>
+          <% if @user == current_user %>
+            <button type="button" class="btn btn-secondary m-3"><%= link_to "ログアウト", session_path(current_user.id), method: :delete, data: {confirm: "ログアウトしてもよろしいですか？"} %></button>
+          <% else %>
+            <button type="button" class="btn btn-warning m-3"><%= link_to "マイプロフィール", user_path(current_user.id) %></button>
+            <button type="button" class="btn btn-secondary m-3"><%= link_to "ログアウト", session_path(current_user.id), method: :delete, data: {confirm: "ログアウトしてもよろしいですか？"} %></button>
+          <% end %>
+        <% else %>
+          <button type="button" class="btn btn-info m-3"><%= link_to "サインアップ", new_user_path %></button>
+          <button type="button" class="btn btn-dark m-3"><%= link_to "ログイン", new_session_path %></button>
+        <% end %>
 
-    <div class="container">
-    <%= yield %>
+        <div class="container">
+          <%= yield %>
+        </div>
+
+        <footer>
+          <nav class="navbar navbar-dark bg-dark">
+            <a class="navbar-brand ml-auto" href="#">上まで戻る</a>
+          </nav>
+        </footer>
+      </body>
     </div>
-
-    <footer>
-    <nav class="navbar navbar-dark bg-dark">
-       <a class="navbar-brand ml-auto" href="#">上まで戻る</a>
-    </nav>
-    </footer>
-  </body>
-   </div>
 </html>

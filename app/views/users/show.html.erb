@@ -1,5 +1,7 @@
 <h1><%= @user.name %>のページ</h1>
+
 <%= image_tag 'star.png', :size => '800x300' %>
+
 <p>メールアドレス: <%= @user.email %></p>
 
 
@@ -10,12 +12,14 @@
 
 <div class="user-contents">
   <% @user.pictures.each_with_index do |picture, index| %>
-    <p class="m-2 display-3"><%= index + 1 %></p>
-    <%= image_tag picture.image.url, :size =>'250x250' %>
-    <h5>コメント</h5>
-    <p><%= picture.comment %></p>
-    <button type="button" class="btn btn-primary"><%= link_to '詳細を見る', picture, data: { confirm: "#{index +1}の画像を確認しますか？" } %></button>
-    <button type="button" class="btn btn-success"><%= link_to '編集する', edit_picture_path(picture), data: { confirm: "#{index +1}の画像を編集しますか？" } %></button>
-    <button type="button" class="btn btn-danger"><%= link_to '削除する', picture, method: :delete, data: { confirm: "#{index +1}の画像を削除してもいいですか？" } %></button>
+    <div class="my-contents">
+      <p class="m-2 display-3"><%= index + 1 %></p>
+      <%= image_tag picture.image.url, :size =>'250x250' %>
+      <h5>コメント</h5>
+      <p><%= picture.comment %></p>
+      <button type="button" class="btn btn-primary"><%= link_to '詳細を見る', picture, data: { confirm: "#{index +1}の画像を確認しますか？" } %></button>
+      <button type="button" class="btn btn-success"><%= link_to '編集する', edit_picture_path(picture), data: { confirm: "#{index +1}の画像を編集しますか？" } %></button>
+      <button type="button" class="btn btn-danger"><%= link_to '削除する', picture, method: :delete, data: { confirm: "#{index +1}の画像を削除してもいいですか？" } %></button>
+    </div>
   <% end %>
 </div>

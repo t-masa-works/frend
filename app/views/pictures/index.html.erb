@@ -1,17 +1,15 @@
 <div class="top">
-<div class="card bg-dark text-white ">
-  <img src="/assets/Top.jpg" class="card-img" alt="..." style=height:400px;>
-  <div class="card-img-overlay d-flex align-items-center justify-content-center">
-    <h5 class="card-title display-4">つながりアプリケーション</h5>
-  
+  <div class="card bg-dark text-white ">
+    <img src="/assets/Top.jpg" class="card-img" alt="..." style=height:400px;>
+    <div class="card-img-overlay d-flex align-items-center justify-content-center">
+      <h5 class="card-title display-4">つながりアプリケーション</h5>
+    </div>
   </div>
 </div>
-</div>
-
-
-<p id="notice"></p>
 
 <h1>画像一覧</h1>
+
+<% notice %>
 
 <button type="button" class="btn btn-info"><%= link_to "自分の画像一覧を見る", user_path(current_user.id) %></button>
 <button type="button" class="btn btn-info"><%= link_to '新しい画像を投稿する', new_picture_path %></button>
@@ -43,7 +41,5 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
 
 
